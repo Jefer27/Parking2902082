@@ -2,6 +2,9 @@ package org.ficha2902082.maven.parking.sebastian.entities;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+
+
 
 public class Registro {
 
@@ -15,6 +18,7 @@ public class Registro {
 //atributos de relacion
 public Carro carro;
 public Cupo cupo;
+public Empleado empleado;
 
 //cons po defecto
 public Registro() {
@@ -23,7 +27,7 @@ public Registro() {
 
 //cons parametrizado
 public Registro(LocalDate fechaInicio, LocalTime horaInicio, LocalDate fechaFin, LocalTime horaFin, Double valor,
-        Carro carro, Cupo cupo) {
+        Carro carro, Cupo cupo, Empleado empleado) {
     this.fechaInicio = fechaInicio;
     this.horaInicio = horaInicio;
     this.fechaFin = fechaFin;
@@ -31,6 +35,10 @@ public Registro(LocalDate fechaInicio, LocalTime horaInicio, LocalDate fechaFin,
     this.valor = valor;
     this.carro = carro;
     this.cupo = cupo;
+    this.empleado = empleado;
+    
+   
+
 }
 
 

@@ -5,17 +5,27 @@ import org.apache.http.config.Registry;
 import org.ficha2902082.maven.parking.sebastian.entities.Carro;
 import org.ficha2902082.maven.parking.sebastian.entities.Cliente;
 import org.ficha2902082.maven.parking.sebastian.entities.Cupo;
+import org.ficha2902082.maven.parking.sebastian.entities.Empleado;
 import org.ficha2902082.maven.parking.sebastian.entities.Registro;
 import org.ficha2902082.maven.parking.sebastian.entities.TipoDocumento;
 import org.ficha2902082.maven.parking.sebastian.entities.TipoVehiculo;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.*;
-
-
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
 
 public class Main {
     public static void main(String[] args) { 
+
+
+//empleados
+Empleado empleado1 = new Empleado("jeferson stiven", 123);
+Empleado empleado2 = new Empleado("jose torres", 254);
+Empleado empleado3 = new Empleado("maria riscanevo", 458);
+
+
         //crear dos cupos
         //instanciar dos cupos:
         Cupo cupito1 = new Cupo();
@@ -53,7 +63,7 @@ public class Main {
             LocalTime.of(6, 30, 23),
             50000.00,
             cli.misCarros.get(0),
-            cupito1
+            cupito1,empleado1
         );
 
         Registro registro2 = new Registro(
@@ -63,19 +73,54 @@ public class Main {
             LocalTime.of(13, 9, 54),
             70000.00,
             cli.misCarros.get(0),
-            cupito2
+            cupito2,empleado2
         );
+
+        LocalDate fi1 = LocalDate.of(2023, Month.DECEMBER, 24);
+        LocalTime hi1 = LocalTime.of(11, 30, 0);
+        LocalDate ff1 = LocalDate.of(2023, Month.JANUARY, 12);
+        LocalTime hf1 = LocalTime.of(12, 10, 2);
+        Double valorR2 = 50000.0;
+
+        Registro r1= new Registro(ff1, hi1, fi1, hf1, valorR2, cli.misCarros.get(0), cupito2, empleado1);
+        Registro r2= new Registro(ff1, hi1, fi1, hf1, valorR2, cli.misCarros.get(0), cupito2, empleado2);
+        Registro r3= new Registro(ff1, hi1, fi1, hf1, valorR2, cli.misCarros.get(0), cupito2, empleado3);
+
+
         //vincular los registros a la lista de registros 
+        misResgistros.add(r3);
+        misResgistros.add(r1);
+        misResgistros.add(r2);
         misResgistros.add(registro1);
         misResgistros.add(registro2);
+       
+
 
         //recorrer la lista de registros
         for(Registro r : misResgistros ){
 
             System.out.println( " Placa: " + r.carro.placa + "|" + "Cupo: " + r.cupo.letra + "|" + "Valor: " + r.valor + "|" + "Fecha Inicio: " + r.fechaInicio.toString() + "|"
-            + "Fecha Final" + r.fechaFin.toString() + "|"  );
+            + "Fecha Final" + r.fechaFin.toString() + "|" + "Codigo del empleado:"+ r.empleado.codigo  );
 
         }
+
+        
+
+      
+    
+
+         List<Empleado> misEmpleado = new ArrayList<>();
+
+         misEmpleado.add(empleado1);
+         misEmpleado.add(empleado2);
+         misEmpleado.add(empleado3);
+
+      
+
+
+
+
+
         
     }
 }
